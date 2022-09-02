@@ -82,16 +82,41 @@ tim_berners_lee = Programmer(
     famous_for = "World Wide Web"
 )
 
+james_martin = Programmer(
+    first_name = "James",
+    last_name = "Martin",
+    gender = "M",
+    nationality = "British",
+    famous_for = "Studying at Code Institute"
+)
+
 # add each instance of our programmers to our session
 # session.add(ada_lovelace)
-session.add(alan_turing)
-session.add(grace_hopper)
-session.add(margaret_hamilton)
-session.add(bill_gates)
-session.add(tim_berners_lee)
+# session.add(alan_turing)
+# session.add(grace_hopper)
+# session.add(margaret_hamilton)
+# session.add(bill_gates)
+# session.add(tim_berners_lee)
+# session.add(james_martin)
 
 # commit our session to the database
-session.commit()
+# session.commit()
+
+# updating a single record
+# programmer = session.query(Programmer).filter_by(id=9).first()
+# programmer.famous_for = "World President"
+
+# session.commit()
+
+# Updating multiple records
+people = session.query(Programmer)
+for person in people:
+    if person.gender == "F":
+        person.gender = "Female"
+    elif person.gender == "M":
+        person.gender = "Male"
+    else:
+        print("Gender not defined")
 
 # query the database to find all programmers
 programmers = session.query(Programmer)
